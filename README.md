@@ -15,8 +15,28 @@ Functions exposed to the client
 + `oauth2_has_access_token()` Return true if there is a cookie with the access token, false otherwise. **Attention**, the token may be invalid
 + `oauth2_destroy_access_token()` Destroy the cookie associated with the access token
 + `logout(redirect_url)` Destroy the cookie associated with the access token, and redirect the user agent to `redirect_url`
+
 ### Loading protected resources inside the browser
 + `oauth2_authorization_header()` Returns the `Authorization` header field to be used when making requests to protected url. Throws an `Error` if there is any cookie associated with the access token
-+ `oauth_load_protected_resource(resource_url)` Try to load the protected resource at `resource_url` using the access token in the cookie. Returns a `Promise` that resolve to a url containing the resource correctly loaded, otherwise the promise is rejected
++ `oauth_load_protected_resource(resource_url)` Try to load the protected resource at `resource_url` using the access token in the cookie. Returns a `Promise` that resolve to a url containing the resource correctly loaded, otherwise the promise is rejected<br>
+For example, if you have to load a protected image
+```js
+var imgTag = document.getElementById("protected_img");
+var protectedUrl = "/protected/image.jpg"
+
+oauth_load_protected_resource(protectedUrl)
+        .then(img_url => { imgTag.src = img_url })
+        .catch(console.error);
+```
 ### During oauth authorization code grant flow
-The only function exposed is `oauth2_authorization_code_authentication(type, data)`. Create a cookie with the authentication data and reload the page, sending the cookie to the server. See [Authorization Form](https://github.com/luckv/express-oauth-server-spa/blob/master/README.md#authorization-form) in express-oauth-server-spa.
+The only function exposed is `oauth2_authorization_code_authentication(type, data)`. Create a cookie with the authentication data and reload the page, sending the cookie to the server. See [Authorization Form](https://github.com/luckv/express-oauth-server-spa/blob/master/README.md#authorization-form) in express-oauth-server-spa.<br>
+For example, if you have a login form
+```js
+const username = document.getElementById("username").value;
+const password = document.getElementById("password").value;
+
+oauth2_authorization_code_authentication('user', {
+    username: username,
+    password: password
+})
+```
