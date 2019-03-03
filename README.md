@@ -31,7 +31,7 @@ oauth_load_protected_resource(protectedUrl)
         .catch(console.error);
 ```
 ### During oauth authorization code grant flow
-The only function exposed is `oauth2_authorization_code_authentication(type, data)`. Create a cookie with the authentication data and reload the page, sending the cookie to the server. See [Authorization Form](https://github.com/luckv/express-oauth-server-spa/blob/master/README.md#authorization-form) in express-oauth-server-spa.
+The only function exposed is `oauth2_authorization_code_authentication(type, data)`. Create the cookie `oauth2_authorization_code_auth` with the authentication data and reload the page, sending the cookie to the server. See [Authorization Form](https://github.com/luckv/express-oauth-server-spa/blob/master/README.md#authorization-form) in express-oauth-server-spa.
 
 For example, if you have a login form, to authorize the user you should write
 ```js
