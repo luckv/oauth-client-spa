@@ -10,13 +10,13 @@ In the html page where you want to use the library add this
 ```
 ## Use
 Functions exposed to the client
-### For access token and oauth session manipulation
+### Access token and oauth session manipulation
 + `oauth2_token()` Return the acccess token. Throws an `Error` if there is any cookie associated with the access token
-+ `oauth2_has_access_token()` Return true if there is a cookie with the access token, false otherwise. **Attention**, may be the token it's invalid
++ `oauth2_has_access_token()` Return true if there is a cookie with the access token, false otherwise. **Attention**, the token may be invalid
 + `oauth2_destroy_access_token()` Destroy the cookie associated with the access token
 + `logout(redirect_url)` Destroy the cookie associated with the access token, and redirect the user agent to `redirect_url`
-### FLoading protected resources inside the browser
+### Loading protected resources inside the browser
 + `oauth2_authorization_header()` Returns the `Authorization` header field to be used when making requests to protected url. Throws an `Error` if there is any cookie associated with the access token
-+ `oauth_load_protected_resource(resource_url)` Try to load the protected resource at `resource_url` using the access token in the cookie. Returns a `Promise` that resolve to a url containing the resource correctly loaded, otherwise the promise is rejected.
++ `oauth_load_protected_resource(resource_url)` Try to load the protected resource at `resource_url` using the access token in the cookie. Returns a `Promise` that resolve to a url containing the resource correctly loaded, otherwise the promise is rejected
 ### During oauth authorization code grant flow
-The only function exposed is `oauth2_authorization_code_authentication(type, data)`. Create a cookie with the authentication data and reload the page, sending the cookie to the server.
+The only function exposed is `oauth2_authorization_code_authentication(type, data)`. Create a cookie with the authentication data and reload the page, sending the cookie to the server. See [Authorization Form](https://github.com/luckv/express-oauth-server-spa/blob/master/README.md#authorization-form) in express-oauth-server-spa.
