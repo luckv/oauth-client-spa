@@ -1,5 +1,6 @@
 # oauth-client-spa
-A client library for oauth in SPAs (Single Page Applications). It's intended to be used with [express-oauth-server-spa](https://github.com/luckv/express-oauth-server-spa)
+A client library for oauth in SPAs (Single Page Applications).
+It's intended to be used with [express-oauth-server-spa](https://github.com/luckv/express-oauth-server-spa)
 
 ## Library import
 This library make use of [jscookie](https://github.com/js-cookie/js-cookie) for parsing and create cookies.<br>
